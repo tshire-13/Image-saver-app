@@ -36,3 +36,22 @@ Upload photos from React app
 Send image to Node.js backend, which generates a pre-signed S3 URL
 	
 Store image metadata (filename, S3 URL, tags, userID, upload date) in Firebase Firestore
+
+## Photo Gallery UI
+	
+Display photos in a responsive grid 
+
+### Allow filtering by:
+
+Upload date
+
+Tags
+	
+Search by name or description
+
+## Security
+	
+Only logged-in users can upload/view their own images
+	
+Backend verifies user token before generating S3 upload URLs
+
