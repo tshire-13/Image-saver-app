@@ -6,6 +6,7 @@ import { createPresignedPost } from "@aws-sdk/s3-presigned-post"
 import { S3Client } from "@aws-sdk/client-s3"
 import { initializeApp } from 'firebase/app'
 import multer from 'multer'
+import cors from 'cors'
 
 const storage = multer.memoryStorage()
 const upload = multer({ storage: storage })
@@ -13,6 +14,7 @@ const upload = multer({ storage: storage })
 const app = express();
 const port = process.env.PORT || 3000
 
+app.use(cors())
 app.use(express.json());
 
 import { readFileSync } from 'fs'
@@ -63,8 +65,7 @@ app.get('/images', async(req, res) => {
     }
 
     const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
-     console.log('Data:', data)
-    
+    console.log('Data:', data)
     res.json(data)
 
   } catch (error) {
